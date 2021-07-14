@@ -1,13 +1,15 @@
 const express = require('express');
-const taskForm = require('./taskforms');
+
 const router = express.Router();
 
 module.exports = () => {
   router.get('/', (request, response) => {
-    response.render('pages/index', { pageTitle: 'Welcome' });
+    retrun response.send('Task List');
   });
 
-  router.use('/taskforms', taskForm());
+  router.get('/:shortname', (req,res) => {
+      return res.send(`Detail page of ${request.params.shortname}`);
+  });
 
   return router;
 };
