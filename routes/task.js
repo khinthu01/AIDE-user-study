@@ -6,7 +6,7 @@ module.exports = (params) => {
   const { taskService } = params;
 
   router.get('/', async (request, response) => {
-    const tasks = await taskService.getTaskIDs();
+    const tasks = await taskService.getTaskList();
     response.json(tasks);
   });
 

@@ -11,9 +11,17 @@ class TaskService {
   async getTaskIDs() {
     const data = await this.getData();
 
-    return data.map((task) => {
-      return { taskID: task.task_id };
-    });
+    return data.map((task) => ({ taskID: task.task_id }));
+  }
+
+  async getTaskList() {
+    const data = await this.getData();
+    return data.map((task) => ({
+      taskID: task.task_id,
+      title: task.task_title,
+      text: task.text,
+      prompted: task.prompted,
+    }));
   }
 
   async getData() {
