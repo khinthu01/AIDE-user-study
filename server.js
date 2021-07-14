@@ -11,7 +11,7 @@ const app = express();
 
 const port = 3000;
 
-app.set('trust proxy', 1); //without this cookie system may faiil during Production
+app.set('trust proxy', 1); // without this cookie system may faiil during Production
 
 app.use(
   cookieSession({
