@@ -19,5 +19,8 @@
   "homepage": "https://github.com/khinthu01/learnnode#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0"
   }
 }
