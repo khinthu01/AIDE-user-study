@@ -24,6 +24,17 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 
 app.use(express.static(path.join(__dirname, './static'))); // important if css/js/image files from static are required
+app.use(async (request, response, next) => {
+  try {
+    const titles = await taskService.getTaskTitles();
+    response.locals.taskTitles = titles;
+    console.log(response.locals);
+    return next();
+  } catch (err) {
+    return next(err);
+  }
+});
+
 app.use(
   '/',
   routes({
