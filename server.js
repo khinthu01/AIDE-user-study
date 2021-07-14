@@ -28,7 +28,6 @@ app.use(async (request, response, next) => {
   try {
     const titles = await taskService.getTaskTitles();
     response.locals.taskTitles = titles;
-    console.log(response.locals);
     return next();
   } catch (err) {
     return next(err);
