@@ -5,8 +5,9 @@ const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
 class TaskFormService {
-  constructor(datafile) {
+  constructor(datafile, answerfile) {
     this.datafile = datafile;
+    this.answerfile = answerfile;
   }
 
   async getTaskIDs() {
@@ -35,9 +36,20 @@ class TaskFormService {
     };
   }
 
+  async addResponse(task_id, participant_id, answers) {
+    const data = (await this.getAnswerData()) || [];
+    data.unshift = { task_id, participant_id, answers };
+    return writeFile(this.answerfile, JSON.stringify(data));
+  }
+
   async getData() {
     const data = await readFile(this.datafile, 'utf8');
     return JSON.parse(data).taskforms;
+  }
+
+  async getAnswerData() {
+    const data = await readFile(this.answerfile, 'utf8');
+    return JSON.parse(data).answers;
   }
 }
 
