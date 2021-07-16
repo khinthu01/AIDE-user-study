@@ -6,10 +6,15 @@ const router = express.Router();
 module.exports = (params) => {
   const { taskFormService } = params;
 
-  router.get('/:task_titles', async (request, response) => {
-    const taskform = await taskFormService.getQuestions(request.params.task_titles);
+  router.get('/:task_id', async (request, response) => {
+    const title = `Task ${request.params.task_id}`;
+    const taskform = await taskFormService.getQuestions(request.params.task_id);
     console.log(taskform);
-    response.render('layout/layout', { pageTitle: 'Welcome', template: 'taskform' });
+    response.render('layout/layout', {
+      pageTitle: title,
+      template: 'taskform',
+      taskform,
+    });
   });
 
   return router;

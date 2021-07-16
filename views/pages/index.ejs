@@ -2,9 +2,13 @@
   <div class="container" style="margin-top: 3em">
     <div class="row"><h2>Task List:</h2></div>
     <div class="row">
-      <% taskTitles.forEach(function (task) {%>
-      <button class="btn btn-info" href="/tasks/<%= task.taskTitle %>" style="margin-top: 3em">
-        <%= task.taskTitle %>
+      <% tasks.forEach(function (task) {%>
+      <button
+        class="btn btn-info"
+        href="localhost:3000/taskform/<%= task.taskID %>"
+        style="margin-top: 3em"
+      >
+        <%= task.title %>
       </button>
       <%}) %>
     </div>
