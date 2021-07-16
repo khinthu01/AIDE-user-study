@@ -16,7 +16,7 @@ module.exports = (params) => {
   });
 
   router.use('/taskform', taskFormRoute(params));
-  router.use('/task', taskRoute(params));
+  router.use('/task', taskRoute());
 
   return router;
 };
