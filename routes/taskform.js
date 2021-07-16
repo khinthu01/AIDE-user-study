@@ -17,7 +17,7 @@ module.exports = (params) => {
         pageTitle: title,
         template: 'taskform',
         taskform,
-        task_id: request.params.task_id,
+        taskID: request.params.task_id,
       });
     } catch (err) {
       return next(err);
@@ -32,10 +32,10 @@ module.exports = (params) => {
       check('q3').trim().isLength({ min: 2 }).escape(),
     ],
     async (request, response) => {
-      const { task_id, participant_id, a1, a2, a3 } = request.body;
-      console.log(participant_id);
+      const { taskID, participantID, q1, q2, q3 } = request.body;
+      console.log(participantID);
       // console.log(task_id);
-      await taskFormService.addResponse(task_id, participant_id, a1, a2, a3);
+      await taskFormService.addResponse(taskID, participantID, q1, q2, q3);
       request.session.feedback = {
         message: 'Your response has been submitted',
       };

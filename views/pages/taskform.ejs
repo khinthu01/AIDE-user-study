@@ -8,12 +8,16 @@
         <div class="card mt-2 bg-light">
           <div class="card-body bg-light">
             <div class="container">
-              <form id="task-form" method="POST" action="/taskform/<%= task_id %>">
+              <form id="task-form" method="POST" action="/taskform/<%= taskID%>">
                 <div class="controls">
                   <div class="row">
                     <div class="form-group">
-                      <input type="hidden" name="task_id"" class="form-control" value="<%= task_id
-                      %>" />
+                      <input
+                        type="hidden"
+                        name="taskID"
+                        class="form-control"
+                        value="<%= taskID %>"
+                      />
                     </div>
                   </div>
                   <% for (const question in taskform) { %>
