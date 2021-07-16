@@ -36,9 +36,9 @@ class TaskFormService {
     };
   }
 
-  async addResponse(task_id, participant_id, answers) {
+  async addResponse(task_id, participant_id, a1, q2, q3) {
     const data = (await this.getAnswerData()) || [];
-    data.unshift = { task_id, participant_id, answers };
+    data.unshift = { task_id, participant_id, a1, a2, a3 };
     return writeFile(this.answerfile, JSON.stringify(data));
   }
 

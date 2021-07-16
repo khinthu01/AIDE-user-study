@@ -31,7 +31,12 @@ module.exports = (params) => {
       check('q2').trim().isLength({ min: 2 }).escape(),
       check('q3').trim().isLength({ min: 2 }).escape(),
     ],
-    (request, response) => {
+    async (request, response) => {
+      const { task_id, participant_id, a1, a2, a3 } = request.body;
+      await taskFormService.addResponse(task_id, participant_id, a1, a2, a3);
+      request.session.feedback = {
+        message: 'Your response has been submitted',
+      };
       response.send('Task completed');
     }
   );
