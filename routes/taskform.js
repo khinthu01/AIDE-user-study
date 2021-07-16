@@ -8,6 +8,9 @@ const router = express.Router();
 module.exports = (params) => {
   const { taskFormService } = params;
 
+  router.get('/', getTasks);
+  router.post('/', createTask);
+
   router.get('/:task_id', async (request, response, next) => {
     try {
       const title = `Task ${request.params.task_id}`;
