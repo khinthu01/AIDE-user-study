@@ -6,7 +6,7 @@ const TaskService = require('./services/TaskService');
 const TaskFormService = require('./services/TaskFormService');
 
 const taskService = new TaskService('./data/tasks.json');
-const taskFormService = new TaskFormService('./data/taskform.json', '/data/response.json');
+const taskFormService = new TaskFormService('./data/taskform.json', './data/response.json');
 
 const routes = require('./routes');
 const app = express();
