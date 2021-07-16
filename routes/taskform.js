@@ -15,13 +15,14 @@ module.exports = (params) => {
         pageTitle: title,
         template: 'taskform',
         taskform,
+        task_id: request.params.task_id,
       });
     } catch (err) {
       return next(err);
     }
   });
 
-  router.post('/', (request, response) => {
+  router.post('/:task_id', (request, response) => {
     // eslint-disable-next-line no-console
     console.log(request.body);
     response.send('Task completed');
