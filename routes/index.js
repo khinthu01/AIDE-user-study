@@ -11,7 +11,7 @@ module.exports = (params) => {
 
   router.get('/', async (request, response) => {
     const tasks = await taskService.getTaskList();
-    console.log(tasks);
+    // console.log(tasks);
     response.render('layout/layout', { pageTitle: 'Welcome', template: 'index', tasks });
   });
 
