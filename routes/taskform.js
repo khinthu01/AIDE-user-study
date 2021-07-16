@@ -1,5 +1,7 @@
 const express = require('express');
-const TaskService = require('../services/TaskService');
+// const TaskService = require('../services/TaskService');
+
+const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
 
@@ -22,11 +24,17 @@ module.exports = (params) => {
     }
   });
 
-  router.post('/:task_id', (request, response) => {
-    // eslint-disable-next-line no-console
-    // console.log(request.body);
-    response.send('Task completed');
-  });
+  router.post(
+    '/:task_id',
+    [
+      check('q1').trim().isLength({ min: 2 }).escape(),
+      check('q2').trim().isLength({ min: 2 }).escape(),
+      check('q3').trim().isLength({ min: 2 }).escape(),
+    ],
+    (request, response) => {
+      response.send('Task completed');
+    }
+  );
 
   return router;
 };
