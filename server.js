@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
 
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
 const TaskService = require('./services/TaskService');
 const TaskFormService = require('./services/TaskFormService');
@@ -25,7 +25,6 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json({ type: 'application/*+json' }));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
