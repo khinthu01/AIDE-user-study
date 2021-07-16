@@ -10,10 +10,11 @@
             <div class="container">
               <form id="contact-form" role="form">
                 <div class="controls">
+                  <% for (const question in taskform) { %>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="form_message"></label>
+                        <label for="form_message"><% taskform.question %></label>
                         <textarea
                           id="form_message"
                           name="message"
@@ -22,6 +23,9 @@
                         ></textarea>
                       </div>
                     </div>
+                  </div>
+                  <% } %>
+                  <div class="row">
                     <div class="col-md-12">
                       <input
                         type="submit"
