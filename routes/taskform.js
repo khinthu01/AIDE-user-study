@@ -17,5 +17,7 @@ module.exports = (params) => {
     });
   });
 
+  router.post('/', (request, response) => {});
+
   return router;
 };
