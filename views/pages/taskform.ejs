@@ -13,13 +13,13 @@
                   <% for (const question in taskform) { %>
                   <div class="row">
                     <div class="form-group">
-                      <label for="<% question %>"><%= taskform[question] %> </label>
-                      <textarea
+                      <label for="<%= question %>"><%= taskform[question] %> </label>
+                      <input
+                        type="text"
                         id="answer-box"
-                        name="<% question %>"
+                        name="<%= question %>"
                         class="form-control"
-                        rows="4"
-                      ></textarea>
+                      />
                     </div>
                   </div>
                   <% } %>

@@ -24,7 +24,7 @@ module.exports = (params) => {
 
   router.post('/:task_id', (request, response) => {
     // eslint-disable-next-line no-console
-    console.log(request.body);
+    // console.log(request.body);
     response.send('Task completed');
   });
 
