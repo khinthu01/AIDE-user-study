@@ -33,6 +33,7 @@ module.exports = (params) => {
     ],
     async (request, response) => {
       const { task_id, participant_id, a1, a2, a3 } = request.body;
+      console.log(task_id);
       await taskFormService.addResponse(task_id, participant_id, a1, a2, a3);
       request.session.feedback = {
         message: 'Your response has been submitted',
