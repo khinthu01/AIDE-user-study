@@ -37,9 +37,10 @@ class TaskFormService {
   }
 
   async addResponse(task_id, participant_id, a1, a2, a3) {
-    const data = await this.getAnswerData();
+    const data = (await this.getAnswerData()) || [];
     // eslint-disable-next-line no-undef
-    data.unshift = { task_id, participant_id, a1, a2, a3 };
+    data.push({ task_id, participant_id, a1, a2, a3 });
+    // console.log(JSON.stringify(data));
     return writeFile(this.answerfile, JSON.stringify(data));
   }
 
