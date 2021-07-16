@@ -5,28 +5,26 @@
     </div>
     <div class="row">
       <div class="col-lg-7 mx-auto">
-        <div class="card mt-2 mx-auto p-4 bg-light">
+        <div class="card mt-2 bg-light">
           <div class="card-body bg-light">
             <div class="container">
               <form id="contact-form" role="form">
                 <div class="controls">
                   <% for (const question in taskform) { %>
                   <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="form_message"><% taskform.question %></label>
-                        <textarea
-                          id="form_message"
-                          name="message"
-                          class="form-control"
-                          rows="4"
-                        ></textarea>
-                      </div>
+                    <div class="form-group">
+                      <label for="<% taskform[question] %>"><%= taskform[question] %> </label>
+                      <textarea
+                        id="answer-box"
+                        name="<% taskform[question] %>"
+                        class="form-control"
+                        rows="4"
+                      ></textarea>
                     </div>
                   </div>
                   <% } %>
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="margin-top: 1em">
                       <input
                         type="submit"
                         class="btn btn-success btn-send pt-2 btn-block"
