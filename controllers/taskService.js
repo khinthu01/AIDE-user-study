@@ -33,7 +33,7 @@ const updateTask = async (req, res) => {
   }
 
   try {
-    const task = await Task.findByID({ _id: req.params.id });
+    const task = await Task.findById(req.params.id);
     // eslint-disable-next-line no-return-assign
     selectedOption.forEach((option) => (task[option] = req.body[option]));
     await task.save();
