@@ -4,6 +4,7 @@ const Task = require('../models/task');
 
 const createTask = async (req, res) => {
   try {
+    console.log(req.body);
     const task = new Task(req.body);
     await task.save();
     res.status(201).json(task);
@@ -17,7 +18,7 @@ const getTasks = async (req, res) => {
     const tasks = await Task.find();
     res.status(200).json(tasks);
   } catch (err) {
-    res.status(400).json({ success: false, error });
+    res.status(400).json({ success: false, error: 'error 400' });
   }
 };
 
@@ -28,7 +29,7 @@ const updateTask = async (req, res) => {
   const doesExists = selectedOption.every((option) => allowedOptions.includes(option));
 
   if (!doesExists) {
-    return res.status(404).json({ success: false, error });
+    return res.status(404).json({ success: false, error: 'error 404 not found' });
   }
 
   try {
@@ -38,7 +39,7 @@ const updateTask = async (req, res) => {
     await task.save();
     res.status(200).json(task);
   } catch (err) {
-    res.status(404).json({ success: false, error });
+    res.status(404).json({ success: false, error: 'error 404 not found' });
   }
 };
 

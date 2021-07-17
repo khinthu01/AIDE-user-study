@@ -13,6 +13,7 @@ module.exports = () => {
 
   router.get('/', taskService.getTasks);
   router.post('/', taskService.createTask);
+  router.patch('/:id', taskService.updateTask);
 
   return router;
 };
