@@ -9,19 +9,19 @@
       <%}) %>
 
       <script>
-        $(document).ready(function(){
-          const Url='http://localhost:3000/task';
+        $(document).ready(function () {
+          const Url = 'http://localhost:3000/task';
           $.ajax({
             url: Url,
-            type: "GET",
-            success: function(result) {
-              console.log(result)
+            type: 'GET',
+            success: function (result) {
+              console.log(result);
             },
-            error: function(error) {
-              console.log(`Error ${error})
-            }
-          })
-        })
+            error: function (error) {
+              console.log(`Error ${error}`);
+            },
+          });
+        });
       </script>
     </div>
   </div>
