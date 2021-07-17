@@ -12,10 +12,7 @@ module.exports = (params) => {
   router.get('/', async (request, response) => {
     const tasks = await taskService.getTaskList();
     const Url = 'http://localhost:3000/task';
-    axios
-      .get(Url)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+    axios.get(Url);
     // console.log(tasks);
     response.render('layout/layout', { pageTitle: 'Welcome', template: 'index', tasks });
   });

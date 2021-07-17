@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const cookieSession = require('cookie-session');
+const axios = require('axios');
 const db = require('./data/db');
 
 const TaskService = require('./services/TaskService');
@@ -25,6 +26,7 @@ app.use(
 );
 
 app.use(cors());
+app.use(axios());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
