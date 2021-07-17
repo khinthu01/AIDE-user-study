@@ -8,7 +8,7 @@ const createTask = async (req, res) => {
     await task.save();
     res.status(201).json(task);
   } catch (err) {
-    res.status(400).json({ success: false, error });
+    res.status(400).json({ success: false, error: 'error 400' });
   }
 };
 

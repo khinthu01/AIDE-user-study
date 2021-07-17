@@ -1,6 +1,8 @@
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const cookieSession = require('cookie-session');
+const db = require('./data/db');
 
 const TaskService = require('./services/TaskService');
 const TaskFormService = require('./services/TaskFormService');
@@ -22,6 +24,7 @@ app.use(
   })
 );
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.text());
 

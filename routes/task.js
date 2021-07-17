@@ -11,8 +11,8 @@ module.exports = () => {
     response.json(tasks);
   }); */
 
-  router.get('/', taskService.getTasks());
-  router.post('/', taskService.createTask());
+  router.get('/', taskService.getTasks);
+  router.post('/', taskService.createTask);
 
   return router;
 };

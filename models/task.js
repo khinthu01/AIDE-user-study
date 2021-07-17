@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-  task_id: Number,
-  task_title: String,
-  text: String,
+  task_id: { type: Number },
+  task_title: { type: String },
+  text: { type: String },
   prompted: { type: Boolean, default: false },
 });
 
