@@ -13,9 +13,14 @@ module.exports = (params) => {
   router.get('/', async (request, response) => {
     const tasks = await taskService.getTaskList();
     const Url = 'http://localhost:3000/task';
-    axios.get(Url);
+
+    // eslint-disable-next-line no-return-assign
+    const taskData = await axios.get(Url);
+    const { data } = taskData;
+
+    // console.log(taskData.data[0].task_title);
     // console.log(tasks);
-    response.render('layout/layout', { pageTitle: 'Welcome', template: 'index', tasks });
+    response.render('layout/layout', { pageTitle: 'Welcome', template: 'index', tasks, data });
   });
 
   router.use('/taskform', taskFormRoute(params));

@@ -26,7 +26,7 @@ app.use(
 );
 
 app.use(cors());
-app.use(axios());
+// app.use(axios());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
