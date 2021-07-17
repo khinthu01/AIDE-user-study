@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/khinthu01/learnnode#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
