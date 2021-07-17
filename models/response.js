@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
 const responseSchema = new mongoose.Schema({
-  task_id: Number,
-  task_title: String,
-  participant_id: String,
-  q1: String,
-  q2: String,
-  q3: String,
+  _id: { type: mongoose.Schema.Types.ObjectId, ref: 'tasks' },
+  task_title: { type: String },
+  participant_id: { type: String },
+  q1: { type: String },
+  q2: { type: String },
+  q3: { type: String },
 });
 
 const Response = mongoose.model('response', responseSchema);
