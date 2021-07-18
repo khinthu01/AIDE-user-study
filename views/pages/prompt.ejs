@@ -30,17 +30,16 @@
       console.log('reset!');
     }
   </script>
-  <div class="container" style="margin-top: 2em">
+  <div class="container" style="margin-top: 2em; padding-left: 3em">
     <input id="taskId" type="hidden" value="<%= taskData._id %>" />
     <div class="row"><h2><%= taskData.task_title %></h2></div>
     <div class="row">
       <% if(taskData.prompted) { %>
-      <p><%= taskData.text %></p>
+      <h4><%= taskData.text %></h4>
       <% } %>
     </div>
-    <div class="row">
-      <small>Please press reset to reset flag.</small>
-      <button onclick="turnOff()">Reset</button>
-    </div>
+
+    <small>Please press reset to reset flag.</small> <br />
+    <button class="btn btn-secondary" onclick="turnOff()" style="margin-top: 1em">Reset</button>
   </div>
 </body>
