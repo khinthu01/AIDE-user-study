@@ -25,6 +25,7 @@ module.exports = () => {
   router.use('/task', taskRoute());
   router.use('/form', formRoute());
   router.use('/responses', responseRoute());
+  router.use('/prompt', promptRoute);
 
   return router;
 };
