@@ -98,7 +98,9 @@
   </div>
 
   <script>
-    const taskAudio = new Audio();
-    function playAudio() {}
+    const taskAudio = new Audio(taskData.audio_Url);
+    function playAudio() {
+      taskAudio.play();
+    }
   </script>
 </body>

@@ -8,9 +8,13 @@ const router = express.Router();
 module.exports = () => {
   router.get('/:task_id', async (request, response, next) => {
     try {
+      const taskUrl = `http://localhost:3000/task/${request.params.task_id}`;
       const taskformUrl = `http://localhost:3000/taskform/${request.params.task_id}`;
 
       const questionsUrl = `http://localhost:3000/taskform/questions/${request.params.task_id}`;
+
+      const task = await axios.get(taskUrl);
+      const taskData = task.data;
 
       const taskform = await axios.get(taskformUrl);
       const taskformData = taskform.data;
@@ -23,6 +27,7 @@ module.exports = () => {
       response.render('layout/layout', {
         pageTitle: title,
         template: 'form',
+        taskData,
         taskformData,
         questions,
       });
