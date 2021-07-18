@@ -1,17 +1,23 @@
 const express = require('express');
-// const TaskService = require('../services/TaskService');
+const taskFormController = require('../controllers/taskFormController'),
 
-const { check, validationResult } = require('express-validator');
+// const check = require('express-validator');
 
 const router = express.Router();
 
-module.exports = (params) => {
-  const { taskFormService } = params;
+module.exports = () => {
+  //const { taskFormService } = params;
 
-  router.get('/:task_id', async (request, response, next) => {
+  router.get('/', taskFormController.getTaskForm);
+  router.post('/', taskFormController.createTaskForm);
+  router.patch('/:task_id', taskFormController.updateTaskForm);
+
+  /* router.get('/:task_id', async (request, response, next) => {
     try {
-      const title = `Task ${request.params.task_id}`;
-      const taskform = await taskFormService.getQuestions(request.params.task_id);
+      // const title = `Task ${request.params.task_id}`;
+      const taskform = await taskFormController.getTaskFormById(request.params.task_id);
+
+      const title = taskform.task_title;
       // console.log(taskform);
       response.render('layout/layout', {
         pageTitle: title,
@@ -22,9 +28,9 @@ module.exports = (params) => {
     } catch (err) {
       return next(err);
     }
-  });
+  }); */
 
-  router.post(
+  /* router.post(
     '/:task_id',
     [
       check('q1').trim().isLength({ min: 2 }).escape(),
@@ -41,7 +47,7 @@ module.exports = (params) => {
       };
       response.send('Task completed');
     }
-  );
+  ); */
 
   return router;
 };

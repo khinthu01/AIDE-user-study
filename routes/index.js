@@ -23,7 +23,7 @@ module.exports = (params) => {
     response.render('layout/layout', { pageTitle: 'Welcome', template: 'index', data });
   });
 
-  router.use('/taskform', taskFormRoute(params));
+  router.use('/taskform', taskFormRoute());
   router.use('/task', taskRoute());
 
   return router;
