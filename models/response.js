@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const responseSchema = new mongoose.Schema({
   _task: { type: mongoose.Schema.Types.ObjectId, ref: 'tasks' },

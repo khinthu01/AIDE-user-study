@@ -1,12 +1,12 @@
 const express = require('express');
-const taskFormController = require('../controllers/taskFormController'),
+const taskFormController = require('../controllers/taskFormController');
 
 // const check = require('express-validator');
 
 const router = express.Router();
 
 module.exports = () => {
-  //const { taskFormService } = params;
+  // const { taskFormService } = params;
 
   router.get('/', taskFormController.getTaskForm);
   router.post('/', taskFormController.createTaskForm);
