@@ -4,13 +4,9 @@ const responseController = require('../controllers/responseController');
 // const TaskForm = require('../models/taskform');
 const { default: axios } = require('axios');
 
-// const check = require('express-validator');
-
 const router = express.Router();
 
 module.exports = () => {
-  // const { taskFormService } = params;
-
   router.get('/', taskFormController.getTaskForms);
   router.post('/', taskFormController.createTaskForm);
   router.get('/:task_id', taskFormController.getTaskFormById);

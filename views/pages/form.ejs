@@ -8,7 +8,7 @@
         <div class="card mt-2 bg-light">
           <div class="card-body bg-light">
             <div class="container">
-              <form id="task-form" method="POST" action="/taskform/<%= taskform._task %>">
+              <form id="task-form" method="POST" action="/taskform/<%= taskformData._task %>">
                 <div class="controls">
                   <div class="row">
                     <div class="form-group">
@@ -16,14 +16,14 @@
                         type="hidden"
                         name="_task"
                         class="form-control"
-                        value="<%= taskform._task %>"
+                        value="<%= taskformData._task %>"
                       />
                     </div>
                   </div>
-                  <% for (const question in taskform) { %>
+                  <% for (const question in questions) { %>
                   <div class="row">
                     <div class="form-group">
-                      <label for="<%= question %>"><%= taskform[question] %> </label>
+                      <label for="<%= question %>"><%= questions[question] %> </label>
                       <input
                         type="text"
                         id="answer-box"
