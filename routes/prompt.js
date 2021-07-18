@@ -12,9 +12,11 @@ module.exports = () => {
       const taskData = task.data;
 
       response.render('layout/layout', {
+        pageTitle: 'Prompt',
         template: 'prompt',
         taskData,
       });
+      //response.send('hello');
     } catch (err) {
       return next(err);
     }

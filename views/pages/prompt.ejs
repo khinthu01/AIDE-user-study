@@ -2,8 +2,9 @@
   <div class="container" style="margin-top: 2em">
     <div class="row"><h2><%= taskData.task_title %></h2></div>
     <div class="row">
-      <p><%= taskData.text if prompted %></p>
+      <% if(taskData.prompted) { %>
+      <p><%= taskData.text %></p>
+      <% } %>
     </div>
-    <div class="row"><h2>Task List:</h2></div>
   </div>
 </body>
