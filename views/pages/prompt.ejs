@@ -8,11 +8,13 @@
       setInterval(async function (currentTaskData) {
         var newTaskData = await getTaskData(taskUrl);
 
-        if (newTaskData.prompted === currentTaskData.prompted) {
+        if (newTaskData === currentTaskData) {
           currentTaskData = newTaskData;
         } else {
           location.reload();
         }
+
+        // console.log('refresh');
       }, 1000);
     });
 

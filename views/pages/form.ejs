@@ -12,7 +12,9 @@
       var audio = document.getElementById('audio');
       audio.play();
 
-      setTimeout(promptText(), 328000);
+      setTimeout(function () {
+        promptText();
+      }, 328000);
     }
   </script>
 
