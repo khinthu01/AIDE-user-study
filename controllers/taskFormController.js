@@ -40,7 +40,7 @@ const getQuestions = async (req, res) => {
 };
 
 const updateTaskForm = async (req, res) => {
-  const allowedOptions = ['task_title', 'q1', 'q2', 'q3'];
+  const allowedOptions = ['task_title', 'participant_id', 'q1', 'q2', 'q3'];
   const selectedOption = Object.keys(req.body);
 
   const doesExists = selectedOption.every((option) => allowedOptions.includes(option));

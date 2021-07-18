@@ -1,7 +1,7 @@
 const express = require('express');
 const { default: axios } = require('axios');
 
-// const check = require('express-validator');
+const { check } = require('express-validator');
 
 const router = express.Router();
 
@@ -33,24 +33,20 @@ module.exports = () => {
     }
   });
 
-  /* router.post(
-    '/:task_id',
+  router.post(
+    '/responses',
     [
       check('q1').trim().isLength({ min: 2 }).escape(),
       check('q2').trim().isLength({ min: 2 }).escape(),
       check('q3').trim().isLength({ min: 2 }).escape(),
     ],
-    async (request, response) => {
-      const { taskID, participantID, q1, q2, q3 } = request.body;
-      console.log(participantID);
-      // console.log(task_id);
-      await taskFormService.addResponse(taskID, participantID, q1, q2, q3);
-      request.session.feedback = {
-        message: 'Your response has been submitted',
-      };
-      response.send('Task completed');
+    async (req, res) => {
+      // const { _task, task_title, participant_id, q1, q2, q3 } = req.body;
+
+      const responseUrl = 'http://localhost:3000/responses';
+      axios.post(responseUrl, req.body);
     }
-  ); */
+  );
 
   return router;
 };
