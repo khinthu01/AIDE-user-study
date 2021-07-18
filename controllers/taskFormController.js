@@ -10,7 +10,7 @@ const createTaskForm = async (req, res) => {
   }
 };
 
-const getTaskForm = async (req, res) => {
+const getTaskForms = async (req, res) => {
   try {
     const taskforms = await TaskForm.find();
     res.status(200).json(taskforms);
@@ -49,4 +49,4 @@ const updateTaskForm = async (req, res) => {
   }
 };
 
-module.exports = { createTaskForm, getTaskForm, getTaskFormById, updateTaskForm };
+module.exports = { createTaskForm, getTaskForms, getTaskFormById, updateTaskForm };
