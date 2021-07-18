@@ -16,7 +16,6 @@ module.exports = () => {
         template: 'prompt',
         taskData,
       });
-      //response.send('hello');
     } catch (err) {
       return next(err);
     }

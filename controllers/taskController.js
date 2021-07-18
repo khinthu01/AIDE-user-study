@@ -1,5 +1,5 @@
 const Task = require('../models/task');
-
+const { default: axios } = require('axios');
 // eslint-disable-next-line import/prefer-default-export
 
 const createTask = async (req, res) => {
@@ -42,6 +42,24 @@ const updateTask = async (req, res) => {
   }
 
   try {
+    const prompted = req.body['prompted'];
+
+    if (prompted === true) {
+      const luxaforUrl = 'https://api.luxafor.com/webhook/v1/actions/solid_color';
+      axios.post(
+        luxaforUrl,
+        { userId: 'a5bd998ec69e', actionFields: { color: 'red' } },
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+    } else if (prompted === false) {
+      const luxaforUrl = 'https://api.luxafor.com/webhook/v1/actions/solid_color';
+      axios.post(
+        luxaforUrl,
+        { userId: 'a5bd998ec69e', actionFields: { color: 'custom', custom_color: '000000' } },
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     const task = await Task.findById(req.params.id);
     // eslint-disable-next-line no-return-assign
     selectedOption.forEach((option) => (task[option] = req.body[option]));
