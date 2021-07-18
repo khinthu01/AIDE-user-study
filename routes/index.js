@@ -5,9 +5,10 @@ const express = require('express');
 // const taskForm = require('./taskforms');
 const taskRoute = require('./task');
 const taskFormRoute = require('./taskform');
+
 const router = express.Router();
 
-module.exports = (params) => {
+module.exports = () => {
   // const { taskService } = params;
 
   router.get('/', async (request, response) => {
