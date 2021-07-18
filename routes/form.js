@@ -10,18 +10,23 @@ module.exports = () => {
 
   router.get('/:task_id', async (request, response, next) => {
     try {
-      // const title = `Task ${request.params.task_id}`;
-      const taskformUrl = 'http://localhost:3000/taskform/:task_id';
-      // const taskform = await taskFormController.getTaskFormById(request.params.task_id);
+      const taskformUrl = `http://localhost:3000/taskform/${request.params.task_id}`;
 
-      const taskform = (await axios.get(taskformUrl)).data;
+      const questionsUrl = `http://localhost:3000/taskform/questions/${request.params.task_id}`;
+
+      const taskform = await axios.get(taskformUrl);
+      const taskformData = taskform.data;
       // eslint-disable-next-line no-console
-      const title = taskform.task_title;
+      const title = taskformData.task_title;
+
+      const taskquestions = await axios.get(questionsUrl);
+      const questions = taskquestions.data;
 
       response.render('layout/layout', {
         pageTitle: title,
-        template: 'taskform',
-        taskform,
+        template: 'form',
+        taskformData,
+        questions,
       });
     } catch (err) {
       return next(err);
