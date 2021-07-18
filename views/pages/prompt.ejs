@@ -8,7 +8,7 @@
       setInterval(async function (currentTaskData) {
         var newTaskData = await getTaskData(taskUrl);
 
-        if (newTaskData === currentTaskData) {
+        if (newTaskData.prompted === currentTaskData.prompted) {
           currentTaskData = newTaskData;
         } else {
           location.reload();
