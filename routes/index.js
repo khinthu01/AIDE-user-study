@@ -8,10 +8,10 @@ const taskFormRoute = require('./taskform');
 const router = express.Router();
 
 module.exports = (params) => {
-  const { taskService } = params;
+  // const { taskService } = params;
 
   router.get('/', async (request, response) => {
-    const tasks = await taskService.getTaskList();
+    // const tasks = await taskService.getTaskList();
     const Url = 'http://localhost:3000/task';
 
     // eslint-disable-next-line no-return-assign
@@ -20,7 +20,7 @@ module.exports = (params) => {
 
     // console.log(taskData.data[0].task_title);
     // console.log(tasks);
-    response.render('layout/layout', { pageTitle: 'Welcome', template: 'index', tasks, data });
+    response.render('layout/layout', { pageTitle: 'Welcome', template: 'index', data });
   });
 
   router.use('/taskform', taskFormRoute(params));

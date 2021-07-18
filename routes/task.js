@@ -1,5 +1,5 @@
 const express = require('express');
-const taskService = require('../controllers/taskService');
+const taskController = require('../controllers/taskController');
 
 const router = express.Router();
 
@@ -11,9 +11,9 @@ module.exports = () => {
     response.json(tasks);
   }); */
 
-  router.get('/', taskService.getTasks);
-  router.post('/', taskService.createTask);
-  router.patch('/:id', taskService.updateTask);
+  router.get('/', taskController.getTasks);
+  router.post('/', taskController.createTask);
+  router.patch('/:id', taskController.updateTask);
 
   return router;
 };
