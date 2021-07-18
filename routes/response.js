@@ -6,6 +6,7 @@ const { default: axios } = require('axios');
 const router = express.Router();
 
 module.exports = () => {
+  // paths for accessing responses apis
   router.get('/', responseController.getResponses);
   router.post('/', responseController.createResponse);
 

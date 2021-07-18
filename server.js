@@ -3,13 +3,9 @@ const cors = require('cors');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const axios = require('axios');
+
+// including database link
 const db = require('./data/db');
-
-/* const TaskService = require('./services/TaskService');
-const TaskFormService = require('./services/TaskFormService');
-
-const taskService = new TaskService('./data/tasks.json');
-const taskFormService = new TaskFormService('./data/taskform.json', './data/response.json'); */
 
 const routes = require('./routes');
 
@@ -27,7 +23,7 @@ app.use(
 );
 
 app.use(cors());
-// app.use(axios());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -35,15 +31,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 
 app.use(express.static(path.join(__dirname, './static'))); // important if css/js/image files from static are required
-/* app.use(async (request, response, next) => {
-  try {
-    const titles = await taskService.getTaskTitles(); // from template variables in more detail video
-    response.locals.taskTitles = titles;
-    return next();
-  } catch (err) {
-    return next(err);
-  }
-}); */
 
 app.use('/', routes());
 

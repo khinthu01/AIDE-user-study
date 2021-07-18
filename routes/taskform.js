@@ -7,6 +7,7 @@ const { default: axios } = require('axios');
 const router = express.Router();
 
 module.exports = () => {
+  // paths for accessing task form apis
   router.get('/', taskFormController.getTaskForms);
   router.post('/', taskFormController.createTaskForm);
   router.get('/:task_id', taskFormController.getTaskFormById);

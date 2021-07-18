@@ -6,8 +6,6 @@ const { check } = require('express-validator');
 const router = express.Router();
 
 module.exports = () => {
-  // const { taskFormService } = params;
-
   router.get('/:task_id', async (request, response, next) => {
     try {
       const taskformUrl = `http://localhost:3000/taskform/${request.params.task_id}`;
@@ -41,9 +39,8 @@ module.exports = () => {
       check('q3').trim().isLength({ min: 2 }).escape(),
     ],
     async (req, res) => {
-      // const { _task, task_title, participant_id, q1, q2, q3 } = req.body;
-
       const responseUrl = 'http://localhost:3000/responses';
+      // sending the form responses to the database
       axios.post(responseUrl, req.body);
     }
   );
