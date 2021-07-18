@@ -5,6 +5,7 @@ const express = require('express');
 // const taskForm = require('./taskforms');
 const taskRoute = require('./task');
 const taskFormRoute = require('./taskform');
+const formRoute = require('./form');
 
 const router = express.Router();
 
@@ -26,6 +27,7 @@ module.exports = () => {
 
   router.use('/taskform', taskFormRoute());
   router.use('/task', taskRoute());
+  router.use('/form', formRoute());
 
   return router;
 };

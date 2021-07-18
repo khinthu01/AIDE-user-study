@@ -8,15 +8,15 @@
         <div class="card mt-2 bg-light">
           <div class="card-body bg-light">
             <div class="container">
-              <form id="task-form" method="POST" action="/taskform/<%= taskID%>">
+              <form id="task-form" method="POST" action="/taskform/<%= taskform._task %>">
                 <div class="controls">
                   <div class="row">
                     <div class="form-group">
                       <input
                         type="hidden"
-                        name="taskID"
+                        name="_task"
                         class="form-control"
-                        value="<%= taskID %>"
+                        value="<%= taskform._task %>"
                       />
                     </div>
                   </div>

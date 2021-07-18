@@ -21,8 +21,19 @@ const getTaskForms = async (req, res) => {
 
 const getTaskFormById = async (req, res) => {
   try {
-    const taskform = await TaskForm.findOne({ _task: req.params.id });
+    const taskform = await TaskForm.findOne({ _task: req.params.task_id });
+    // console.log(taskform);
     res.status(200).json(taskform);
+  } catch (err) {
+    res.status(404).json({ success: false, error: 'error 404 not found' });
+  }
+};
+
+const getQuestions = async (req, res) => {
+  try {
+    const taskform = await TaskForm.findOne({ _task: req.params.task_id });
+    const { q1, q2, q3 } = taskform;
+    res.status(200).json({ q1, q2, q3 });
   } catch (err) {
     res.status(404).json({ success: false, error: 'error 404 not found' });
   }
@@ -49,4 +60,4 @@ const updateTaskForm = async (req, res) => {
   }
 };
 
-module.exports = { createTaskForm, getTaskForms, getTaskFormById, updateTaskForm };
+module.exports = { createTaskForm, getTaskForms, getTaskFormById, updateTaskForm, getQuestions };

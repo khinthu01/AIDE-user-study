@@ -4,7 +4,7 @@
     <div class="row">
       <% data.forEach(function (task) {%>
       <button class="btn btn-info" style="margin-top: 3em">
-        <a class="link-dark" href="/taskform/<%= task._id %>"><%= task.task_title %></a>
+        <a class="link-dark" href="/form/<%= task._id %>"><%= task.task_title %></a>
       </button>
       <%}) %>
     </div>
