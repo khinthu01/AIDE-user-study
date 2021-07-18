@@ -32,15 +32,28 @@ const getTaskFormById = async (req, res) => {
 const getQuestions = async (req, res) => {
   try {
     const taskform = await TaskForm.findOne({ _task: req.params.task_id });
-    const { q1, q2, q3 } = taskform;
-    res.status(200).json({ q1, q2, q3 });
+    const { q1, q2, q3, q4, q5, q6, q7, q8, q9, q10 } = taskform;
+    res.status(200).json({ q1, q2, q3, q4, q5, q6, q7, q8, q9, q10 });
   } catch (err) {
     res.status(404).json({ success: false, error: 'error 404 not found' });
   }
 };
 
 const updateTaskForm = async (req, res) => {
-  const allowedOptions = ['task_title', 'participant_id', 'q1', 'q2', 'q3'];
+  const allowedOptions = [
+    'task_title',
+    'participant_id',
+    'q1',
+    'q2',
+    'q3',
+    'q4',
+    'q5',
+    'q6',
+    'q7',
+    'q8',
+    'q9',
+    'q10',
+  ];
   const selectedOption = Object.keys(req.body);
 
   const doesExists = selectedOption.every((option) => allowedOptions.includes(option));

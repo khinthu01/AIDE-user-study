@@ -1,8 +1,17 @@
 <body>
   <script>
+    async function promptText() {
+      const taskId = document.getElementById('taskId').value;
+      const taskUrl = `http://localhost:3000/task/${taskId}`;
+
+      await axios.patch(taskUrl, { prompted: true });
+    }
+
     function playAudio() {
       var audio = document.getElementById('audio');
       audio.play();
+
+      promptText();
     }
   </script>
 
@@ -11,7 +20,7 @@
       <h1><%= pageTitle %></h1>
     </div>
     <div class="row">
-      <div class="col-lg-7 mx-auto">
+      <div class="col-xl- mx-auto">
         <div class="card mt-2 bg-light">
           <div class="card-body bg-light">
             <div class="container">
@@ -40,6 +49,7 @@
                   <div class="row">
                     <div class="form-group">
                       <input
+                        id="taskId"
                         type="hidden"
                         name="_task"
                         class="form-control"
