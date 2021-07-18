@@ -7,6 +7,7 @@ module.exports = () => {
   // paths for accessing task apis
   router.get('/', taskController.getTasks);
   router.post('/', taskController.createTask);
+  router.get('/:id', taskController.getTaskById);
   router.patch('/:id', taskController.updateTask);
 
   return router;

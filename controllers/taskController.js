@@ -22,6 +22,15 @@ const getTasks = async (req, res) => {
   }
 };
 
+const getTaskById = async (req, res) => {
+  try {
+    const task = await Task.findById(req.params.id);
+    res.status(200).json(task);
+  } catch (err) {
+    res.status(404).json({ success: false, error: 'error 404 not found' });
+  }
+};
+
 const updateTask = async (req, res) => {
   const allowedOptions = ['text', 'prompted'];
   const selectedOption = Object.keys(req.body);
@@ -43,4 +52,4 @@ const updateTask = async (req, res) => {
   }
 };
 
-module.exports = { getTasks, createTask, updateTask };
+module.exports = { getTasks, getTaskById, createTask, updateTask };
