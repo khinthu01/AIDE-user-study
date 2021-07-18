@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const taskSchema = new mongoose.Schema({
   task_id: { type: Number },
   task_title: { type: String },
+  audio_title: { type: String },
+  audio_Url: { type: String },
   text: { type: String },
   prompted: { type: Boolean, default: false },
 });
