@@ -4,14 +4,15 @@
       const taskId = document.getElementById('taskId').value;
       const taskUrl = `http://localhost:3000/task/${taskId}`;
 
-      await axios.patch(taskUrl, { prompted: true });
+      axios.patch(taskUrl, { prompted: true });
+      console.log('prompted!');
     }
 
     function playAudio() {
       var audio = document.getElementById('audio');
       audio.play();
 
-      promptText();
+      setTimeout(promptText(), 5000);
     }
   </script>
 
