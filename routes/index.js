@@ -5,6 +5,7 @@ const taskRoute = require('./task');
 const taskFormRoute = require('./taskform');
 const formRoute = require('./form');
 const responseRoute = require('./response');
+const promptRoute = require('./prompt');
 
 const router = express.Router();
 

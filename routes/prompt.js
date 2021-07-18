@@ -1,0 +1,24 @@
+const express = require('express');
+const { default: axios } = require('axios');
+
+const router = express.Router();
+
+module.exports = () => {
+  router.get('/', async (request, response, next) => {
+    try {
+      const taskUrl = `http://localhost:3000/task/${request.params.task_id}`;
+
+      const task = await axios.get(taskUrl);
+      const taskData = task.data;
+
+      response.render('layout/layout', {
+        template: 'prompt',
+        taskData,
+      });
+    } catch (err) {
+      return next(err);
+    }
+  });
+
+  return router;
+};

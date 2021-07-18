@@ -1,0 +1,23 @@
+<body>
+  <div class="container" style="margin-top: 2em">
+    <div class="row"><h2><%= pageTitle %></h2></div>
+    <div class="row">
+      <p>
+        Please click on the tasks in the task list in order. For each task you'll be instructed to
+        fill out your participant ID and then play an audio clip. As the clip plays please answer
+        the questions on the form relating to the clip. While answering the questions the Luxafor
+        flag attached to your monitor will light at some point signalling that a text prompt has
+        been sent to your secondary monitor. Please follow the instructions on the text prompt while
+        completing your task.
+      </p>
+    </div>
+    <div class="row"><h2>Task List:</h2></div>
+    <div class="row">
+      <% data.forEach(function (task) {%>
+      <button class="btn btn-info" style="margin-top: 1em">
+        <a class="link-dark" href="/form/<%= task._id %>"><%= task.task_title %></a>
+      </button>
+      <%}) %>
+    </div>
+  </div>
+</body>
