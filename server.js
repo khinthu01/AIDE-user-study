@@ -30,7 +30,10 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 
-app.use(express.static(path.join(__dirname, './static'))); // important if css/js/image files from static are required
+// app.use(express.static(path.join(__dirname, './static')));
+// important if css/js/image files from static are required
+
+app.use(express.static('static'));
 
 app.use('/', routes());
 

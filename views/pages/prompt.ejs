@@ -1,5 +1,27 @@
 <body>
   <script>
+    $(document).ready(async function () {
+      const taskId = document.getElementById('taskId').value;
+      const taskUrl = `http://localhost:3000/task/${taskId}`;
+
+      var currentTaskData = await getTaskData(taskUrl);
+      setInterval(async function (currentTaskData) {
+        var newTaskData = await getTaskData(taskUrl);
+
+        if (newTaskData === currentTaskData) {
+          currentTaskData = newTaskData;
+        } else {
+          location.reload();
+        }
+      }, 1000);
+    });
+
+    async function getTaskData(taskUrl) {
+      const currentTask = await axios.get(taskUrl);
+      const currentTaskData = currentTask.data;
+      return currentTaskData;
+    }
+
     async function turnOff() {
       const taskId = document.getElementById('taskId').value;
       const taskUrl = `http://localhost:3000/task/${taskId}`;
