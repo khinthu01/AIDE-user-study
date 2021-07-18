@@ -4,7 +4,7 @@ const { default: axios } = require('axios');
 const router = express.Router();
 
 module.exports = () => {
-  router.get('/', async (request, response, next) => {
+  router.get('/:task_id', async (request, response, next) => {
     try {
       const taskUrl = `http://localhost:3000/task/${request.params.task_id}`;
 
