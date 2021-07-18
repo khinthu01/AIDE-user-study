@@ -1,5 +1,4 @@
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script>
     async function promptText() {
       const taskId = document.getElementById('taskId').value;
@@ -10,11 +9,7 @@
     }
 
     function playAudio() {
-      var audio = new Howl({
-        src: [
-          'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1026185437&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true',
-        ],
-      });
+      var audio = document.getElementById('audio');
       audio.play();
 
       setTimeout(promptText(), 5000);
@@ -45,10 +40,7 @@
                 ></label
               >
               <button class="btn btn-primary btn-circle btn-sm" onclick="playAudio()">
-                <!-- <audio
-                  id="audio"
-                  href="https://soundcloud.com/khin-kyaw-23099097/task-1-audio/s-P8uag2KNjFr"
-                ></audio> -->
+                <audio id="audio" src="/audio/task_1_audio.mp3"></audio>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
