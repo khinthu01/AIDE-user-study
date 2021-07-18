@@ -29,7 +29,7 @@ const getTaskFormById = async (req, res) => {
 };
 
 const updateTaskForm = async (req, res) => {
-  const allowedOptions = ['task_title', 'participant_id', 'q1', 'q2', 'q3'];
+  const allowedOptions = ['task_title', 'q1', 'q2', 'q3'];
   const selectedOption = Object.keys(req.body);
 
   const doesExists = selectedOption.every((option) => allowedOptions.includes(option));
@@ -39,7 +39,7 @@ const updateTaskForm = async (req, res) => {
   }
 
   try {
-    const taskform = await TaskForm.findOne({ _task: req.params.id });
+    const taskform = await TaskForm.findOne({ _task: req.params.task_id });
     // eslint-disable-next-line no-return-assign
     selectedOption.forEach((option) => (taskform[option] = req.body[option]));
     await taskform.save();
