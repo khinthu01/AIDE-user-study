@@ -46,9 +46,10 @@ const updateTask = async (req, res) => {
 
     if (prompted === true) {
       const luxaforUrl = 'https://api.luxafor.com/webhook/v1/actions/solid_color';
+
       axios.post(
         luxaforUrl,
-        { userId: 'a5bd998ec69e', actionFields: { color: 'red' } },
+        { userId: 'a5bd998ec69e', actionFields: { color: 'cyan' } },
         { headers: { 'Content-Type': 'application/json' } }
       );
     } else if (prompted === false) {
