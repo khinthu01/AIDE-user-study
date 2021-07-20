@@ -46,19 +46,16 @@
       var formChanges = await axios.get(url);
       var formChangeData = formChanges.data;
 
-      console.log(formChangeData, taskId);
-
-      const anyTask = formChangeData.some((formChange) => {
+      const anyTask = formChangeData.some(function (formChange) {
         return formChange._task === taskId;
       });
-
-      console.log(anyTask);
 
       if (anyTask) {
         const formChangeUrl = `http://localhost:3000/formChange/${taskId}`;
         formChanges = await axios.get(formChangeUrl);
         formChangeData = formChanges.data;
-        const anyChange = formChangeData.some((formChange) => {
+
+        const anyChange = formChangeData.some(function (formChange) {
           return formChange.participant_id === participantId;
         });
 
@@ -170,7 +167,7 @@
                         id="<%= question %>"
                         name="<%= question %>"
                         class="form-control"
-                        oninput="trackInput('<%= question %>')"
+                        onchange="trackInput('<%= question %>')"
                       />
                     </div>
                   </div>
