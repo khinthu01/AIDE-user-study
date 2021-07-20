@@ -41,22 +41,39 @@
 
       const taskId = document.getElementById('taskId').value;
       const participantId = document.getElementById('participantId').value;
-      const formChangeUrl = `http://localhost:3000/formChange/${taskId}`;
+      const url = 'http://localhost:3000/formChange';
 
-      var formChanges = await axios.get(formChangeUrl);
-      var formChangeData = formChange.data();
+      var formChanges = await axios.get(url);
+      var formChangeData = formChanges.data;
 
-      const anyChange = formChangeData.some(
-        (formChange) => formChange.participant_id === participantId
-      );
+      console.log(formChangeData, taskId);
 
-      if (anyChange) {
-        const url = `http://localhost:3000/formChange/${taskId}/${participantId}`;
+      const anyTask = formChangeData.some((formChange) => {
+        return formChange._task === taskId;
+      });
 
-        axios.patch(url, { changes: change });
+      console.log(anyTask);
+
+      if (anyTask) {
+        const formChangeUrl = `http://localhost:3000/formChange/${taskId}`;
+        formChanges = await axios.get(formChangeUrl);
+        formChangeData = formChanges.data;
+        const anyChange = formChangeData.some((formChange) => {
+          return formChange.participant_id === participantId;
+        });
+
+        if (anyChange) {
+          const url = `http://localhost:3000/formChange/${taskId}/${participantId}`;
+
+          axios.patch(url, { changes: change });
+        } else {
+          axios.post(url, {
+            _task: taskId,
+            participant_id: participantId,
+            changes: [change],
+          });
+        }
       } else {
-        const url = 'http://localhost:3000/formChange';
-
         axios.post(url, {
           _task: taskId,
           participant_id: participantId,
@@ -153,7 +170,7 @@
                         id="<%= question %>"
                         name="<%= question %>"
                         class="form-control"
-                        oninput="taskInput(<%= question %>)"
+                        oninput="trackInput('<%= question %>')"
                       />
                     </div>
                   </div>

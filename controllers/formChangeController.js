@@ -21,7 +21,7 @@ const getFormChanges = async (req, res) => {
 
 const getFormChangeByTaskId = async (req, res) => {
   try {
-    const formChange = await FormChange.findOne(req.params.task_id);
+    const formChange = await FormChange.findOne({ _task: req.params.task_id });
     res.status(200).json(formChange);
   } catch (err) {
     res.status(404).json({ success: false, error: 'error 404 not found' });
@@ -44,6 +44,8 @@ const updateFormChange = async (req, res) => {
       participant_id: req.params.participant_id,
     });
     // eslint-disable-next-line no-return-assign
+
+    console.log(formChange);
     formChange['changes'].push(req.body['changes']);
     await formChange.save();
     res.status(200).json(formChange);
