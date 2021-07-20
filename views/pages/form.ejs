@@ -14,7 +14,55 @@
 
       setTimeout(function () {
         promptText();
-      }, 328000);
+      }, 10000);
+    }
+
+    async function trackInput(questionID) {
+      const inputChange = document.getElementById(`${questionID}`).value;
+      var currentdate = new Date();
+      var datetime =
+        currentdate.getDate() +
+        '/' +
+        (currentdate.getMonth() + 1) +
+        '/' +
+        currentdate.getFullYear() +
+        ' @ ' +
+        currentdate.getHours() +
+        ':' +
+        currentdate.getMinutes() +
+        ':' +
+        currentdate.getSeconds();
+
+      const change = {
+        question: `${questionID}`,
+        change: inputChange,
+        time: datetime,
+      };
+
+      const taskId = document.getElementById('taskId').value;
+      const participantId = document.getElementById('participantId').value;
+      const formChangeUrl = `http://localhost:3000/formChange/${taskId}`;
+
+      var formChanges = await axios.get(formChangeUrl);
+      var formChangeData = formChange.data();
+
+      const anyChange = formChangeData.some(
+        (formChange) => formChange.participant_id === participantId
+      );
+
+      if (anyChange) {
+        const url = `http://localhost:3000/formChange/${taskId}/${participantId}`;
+
+        axios.patch(url, { changes: change });
+      } else {
+        const url = 'http://localhost:3000/formChange';
+
+        axios.post(url, {
+          _task: taskId,
+          participant_id: participantId,
+          changes: [change],
+        });
+      }
     }
   </script>
 
@@ -87,7 +135,12 @@
                       taskformData.participant_id %>"
                         ><%= taskformData.participant_id %>
                       </label>
-                      <input type="text"" name="participant_id" class="form-control" />
+                      <input
+                        type="text"
+                        id="participantId"
+                        name="participant_id"
+                        class="form-control"
+                      />
                     </div>
                   </div>
 
@@ -97,9 +150,10 @@
                       <label for="<%= question %>"><%= questions[question] %> </label>
                       <input
                         type="text"
-                        id="answer-box"
+                        id="<%= question %>"
                         name="<%= question %>"
                         class="form-control"
+                        oninput="taskInput(<%= question %>)"
                       />
                     </div>
                   </div>

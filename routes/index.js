@@ -6,6 +6,7 @@ const taskFormRoute = require('./taskform');
 const formRoute = require('./form');
 const responseRoute = require('./response');
 const promptRoute = require('./prompt');
+const formChangeRoute = require('./formChange');
 
 const router = express.Router();
 
@@ -26,6 +27,7 @@ module.exports = () => {
   router.use('/form', formRoute());
   router.use('/responses', responseRoute());
   router.use('/prompt', promptRoute());
+  router.use('/formChange', formChangeRoute());
 
   return router;
 };
