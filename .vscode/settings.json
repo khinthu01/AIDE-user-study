@@ -1,0 +1,5 @@
+{
+  "appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"],
+  "appService.defaultWebAppToDeploy": "/subscriptions/c6105f1b-33c5-4d6e-bc88-7e67fc70f8fd/resourceGroups/AIDE-User-Study-Monash/providers/Microsoft.Web/sites/AIDEUserStudy",
+  "appService.deploySubpath": "."
+}
