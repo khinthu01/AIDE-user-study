@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const axios = require('axios');
@@ -11,7 +12,8 @@ const routes = require('./routes');
 
 const app = express();
 
-const port = 3000;
+dotenv.config();
+const port = process.env.PORT;
 
 app.set('trust proxy', 1); // without this cookie system may faiil during Production
 
