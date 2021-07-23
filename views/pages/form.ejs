@@ -90,13 +90,26 @@
           <div class="card-body bg-light">
             <div class="container">
               <label for="prompt_button" style="margin-top: 1em">
-                <small>Ctrl+click this</small
+                <small>Shift+click this</small
                 ><a href="http://localhost:3000/prompt/<%= taskformData._task %>"> link </a>
                 <small
                   >to open the prompt page in a separate tab and place tab on the secondary
                   monitor.</small
-                >
+                ><br />
               </label>
+
+              <div style="margin-top: 1em">
+                <h4>Instructions:</h4>
+                <small
+                  >Fill out the participant ID first and then press the play button to listen to the
+                  audio. The questions are in the same order as information given by the audio.
+                  There will be one question in the form where the information cannot be obtained
+                  through the audio recording and you will have to anticipate an alert which will
+                  signal that additional information relevant to the question is being given on the
+                  prompt page. Please listen carefully as you cannot pause or rewind the audio and
+                  attempt as many questions as possible.
+                </small>
+              </div>
 
               <label for="play_button" style="margin-top: 1em"
                 ><small
