@@ -6,7 +6,7 @@ const cookieSession = require('cookie-session');
 const axios = require('axios');
 
 // including database link
-const db = require('./data/db');
+const db = require('./db');
 
 const routes = require('./routes');
 
