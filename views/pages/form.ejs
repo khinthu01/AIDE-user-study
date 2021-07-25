@@ -3,18 +3,23 @@
     async function promptText() {
       const taskId = document.getElementById('taskId').value;
       const taskUrl = `http://localhost:3000/task/${taskId}`;
-
       axios.patch(taskUrl, { prompted: true });
       console.log('prompted!');
     }
 
-    function playAudio() {
+    async function playAudio() {
       var audio = document.getElementById('audio');
       audio.play();
 
+      const taskId = document.getElementById('taskId').value;
+      const taskUrl = `http://localhost:3000/task/${taskId}`;
+      const task = await axios.get(taskUrl);
+      const taskData = task.data;
+      const time = taskData.prompt_time;
+
       setTimeout(function () {
         promptText();
-      }, 10000);
+      }, time);
     }
 
     async function trackInput(questionID) {
@@ -39,7 +44,6 @@
         time: datetime,
       };
 
-      const taskId = document.getElementById('taskId').value;
       const participantId = document.getElementById('participantId').value;
       const url = 'http://localhost:3000/formChange';
 
@@ -51,6 +55,7 @@
       });
 
       if (anyTask) {
+        const taskId = document.getElementById('taskId').value;
         const formChangeUrl = `http://localhost:3000/formChange/${taskId}`;
         formChanges = await axios.get(formChangeUrl);
         formChangeData = formChanges.data;
