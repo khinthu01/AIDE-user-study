@@ -24,6 +24,7 @@
 
     async function trackInput(questionID) {
       const inputChange = document.getElementById(`${questionID}`).value;
+
       var currentdate = new Date();
       var datetime =
         currentdate.getDate() +
@@ -44,6 +45,8 @@
         time: datetime,
       };
 
+      const taskId = document.getElementById('taskId').value;
+
       const participantId = document.getElementById('participantId').value;
       const url = 'http://localhost:3000/formChange';
 
@@ -55,7 +58,6 @@
       });
 
       if (anyTask) {
-        const taskId = document.getElementById('taskId').value;
         const formChangeUrl = `http://localhost:3000/formChange/${taskId}`;
         formChanges = await axios.get(formChangeUrl);
         formChangeData = formChanges.data;
@@ -65,9 +67,10 @@
         });
 
         if (anyChange) {
-          const url = `http://localhost:3000/formChange/${taskId}/${participantId}`;
+          const pidUrl = `http://localhost:3000/formChange/${taskId}/${participantId}`;
+          const url = 'http://localhost:3000/formChange';
 
-          axios.patch(url, { changes: change });
+          axios.patch(pidUrl, { changes: change });
         } else {
           axios.post(url, {
             _task: taskId,
